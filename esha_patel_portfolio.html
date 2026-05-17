@@ -1,0 +1,543 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Esha Patel — Portfolio</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet"/>
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --cream: #FAF8F3;
+    --dark: #1A1A1A;
+    --muted: #6B6860;
+    --accent: #C9773A;
+    --accent-light: #F5E9DC;
+    --border: #E8E4DC;
+    --white: #FFFFFF;
+    --teal: #2A6B66;
+    --teal-light: #E1F0EF;
+  }
+
+  body {
+    background: var(--cream);
+    color: var(--dark);
+    font-family: 'DM Sans', sans-serif;
+    font-weight: 400;
+    line-height: 1.7;
+  }
+
+  /* HERO */
+  .hero {
+    background: var(--dark);
+    color: var(--white);
+    padding: 80px 40px 70px;
+    position: relative;
+    overflow: hidden;
+  }
+  .hero::before {
+    content: '';
+    position: absolute;
+    top: -80px; right: -80px;
+    width: 400px; height: 400px;
+    border-radius: 50%;
+    background: rgba(201,119,58,0.12);
+  }
+  .hero::after {
+    content: '';
+    position: absolute;
+    bottom: -60px; left: 30%;
+    width: 250px; height: 250px;
+    border-radius: 50%;
+    background: rgba(42,107,102,0.1);
+  }
+  .hero-inner {
+    max-width: 860px;
+    margin: 0 auto;
+    position: relative;
+    z-index: 1;
+  }
+  .hero-tag {
+    display: inline-block;
+    font-size: 11px;
+    letter-spacing: 2.5px;
+    text-transform: uppercase;
+    color: var(--accent);
+    font-weight: 500;
+    margin-bottom: 20px;
+    border: 1px solid rgba(201,119,58,0.4);
+    padding: 4px 14px;
+    border-radius: 20px;
+  }
+  .hero h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(42px, 7vw, 72px);
+    font-weight: 700;
+    line-height: 1.1;
+    margin-bottom: 18px;
+    letter-spacing: -1px;
+  }
+  .hero h1 span { color: var(--accent); }
+  .hero-sub {
+    font-size: 16px;
+    color: rgba(255,255,255,0.6);
+    max-width: 520px;
+    margin-bottom: 36px;
+    font-weight: 300;
+  }
+  .hero-pills {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+  }
+  .pill {
+    font-size: 12px;
+    font-weight: 500;
+    padding: 6px 16px;
+    border-radius: 20px;
+    background: rgba(255,255,255,0.08);
+    border: 1px solid rgba(255,255,255,0.14);
+    color: rgba(255,255,255,0.8);
+    letter-spacing: 0.3px;
+  }
+  .contact-bar {
+    background: var(--accent);
+    padding: 14px 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 32px;
+    flex-wrap: wrap;
+  }
+  .contact-bar a {
+    color: var(--white);
+    text-decoration: none;
+    font-size: 13px;
+    font-weight: 500;
+    display: flex;
+    align-items: center;
+    gap: 7px;
+    opacity: 0.92;
+    transition: opacity 0.2s;
+  }
+  .contact-bar a:hover { opacity: 1; }
+
+  /* CONTENT */
+  .content {
+    max-width: 860px;
+    margin: 0 auto;
+    padding: 60px 40px;
+  }
+
+  /* SECTION LABEL */
+  .section-label {
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 32px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+  .section-label::after {
+    content: '';
+    flex: 1;
+    height: 1px;
+    background: var(--border);
+  }
+
+  /* SUMMARY */
+  .summary-box {
+    background: var(--white);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    padding: 36px 40px;
+    margin-bottom: 60px;
+    border-left: 4px solid var(--accent);
+  }
+  .summary-box p {
+    font-size: 16px;
+    color: #3a3a3a;
+    line-height: 1.8;
+  }
+
+  /* EXPERIENCE */
+  .job {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 0;
+    margin-bottom: 40px;
+    background: var(--white);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    overflow: hidden;
+    transition: box-shadow 0.2s;
+  }
+  .job:hover { box-shadow: 0 6px 24px rgba(0,0,0,0.07); }
+  .job-header {
+    padding: 28px 32px 20px;
+    border-bottom: 1px solid var(--border);
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 16px;
+    flex-wrap: wrap;
+  }
+  .job-badge {
+    display: inline-block;
+    font-size: 10px;
+    font-weight: 500;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    padding: 4px 12px;
+    border-radius: 20px;
+    margin-bottom: 10px;
+  }
+  .badge-fincrime { background: #FEF3E2; color: #92501A; }
+  .badge-ai { background: var(--teal-light); color: var(--teal); }
+  .badge-support { background: #EEF0FD; color: #3B45A5; }
+  .badge-tech { background: #FDE8F0; color: #9C2D60; }
+
+  .job-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 20px;
+    font-weight: 700;
+    color: var(--dark);
+    margin-bottom: 4px;
+  }
+  .job-company {
+    font-size: 14px;
+    color: var(--muted);
+    font-weight: 400;
+  }
+  .job-company strong {
+    color: var(--accent);
+    font-weight: 500;
+  }
+  .job-period {
+    font-size: 12px;
+    color: var(--muted);
+    font-weight: 500;
+    background: var(--cream);
+    border: 1px solid var(--border);
+    padding: 5px 14px;
+    border-radius: 20px;
+    white-space: nowrap;
+    align-self: flex-start;
+  }
+  .job-body {
+    padding: 24px 32px 28px;
+  }
+  .job-body p {
+    font-size: 14.5px;
+    color: #444;
+    line-height: 1.85;
+  }
+
+  /* SKILLS */
+  .skills-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 16px;
+    margin-bottom: 60px;
+  }
+  .skill-card {
+    background: var(--white);
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    padding: 22px 24px;
+  }
+  .skill-card-title {
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 14px;
+  }
+  .skill-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 7px;
+  }
+  .skill-tag {
+    font-size: 12px;
+    font-weight: 500;
+    padding: 4px 11px;
+    border-radius: 6px;
+    background: var(--cream);
+    border: 1px solid var(--border);
+    color: var(--dark);
+  }
+
+  /* EDUCATION */
+  .edu-card {
+    background: var(--dark);
+    border-radius: 16px;
+    padding: 32px 36px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 24px;
+    flex-wrap: wrap;
+    margin-bottom: 60px;
+  }
+  .edu-degree {
+    font-family: 'Playfair Display', serif;
+    font-size: 18px;
+    font-weight: 700;
+    color: var(--white);
+    margin-bottom: 6px;
+  }
+  .edu-school {
+    font-size: 13px;
+    color: rgba(255,255,255,0.5);
+  }
+  .edu-icon {
+    width: 52px;
+    height: 52px;
+    border-radius: 50%;
+    background: rgba(201,119,58,0.2);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+  }
+  .edu-icon svg { width: 26px; height: 26px; stroke: var(--accent); fill: none; stroke-width: 1.8; }
+
+  /* FOOTER */
+  footer {
+    background: var(--dark);
+    color: rgba(255,255,255,0.4);
+    text-align: center;
+    padding: 28px;
+    font-size: 12px;
+  }
+
+  @media (max-width: 600px) {
+    .hero { padding: 50px 24px 50px; }
+    .content { padding: 40px 24px; }
+    .job-header { flex-direction: column; }
+    .job-body { padding: 20px 24px 24px; }
+    .summary-box { padding: 24px; }
+    .contact-bar { gap: 16px; padding: 14px 20px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-inner">
+    <div class="hero-tag">Professional Portfolio</div>
+    <h1>Esha <span>Patel</span></h1>
+    <p class="hero-sub">FinCrime Analyst · AI Quality Specialist · Technical Support — 3+ years across Coinbase, Revolut & more.</p>
+    <div class="hero-pills">
+      <span class="pill">AML & KYC</span>
+      <span class="pill">Fraud Investigation</span>
+      <span class="pill">AI Model Evaluation</span>
+      <span class="pill">SAR Reporting</span>
+      <span class="pill">Data Annotation</span>
+      <span class="pill">Customer Support</span>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT BAR -->
+<div class="contact-bar">
+  <a href="mailto:Patelesha413@gmail.com">
+    <svg width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m2 7 10 7 10-7"/></svg>
+    Patelesha413@gmail.com
+  </a>
+  <a href="tel:+918349596537">
+    <svg width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.15 11.8a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.06 1h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L7.09 8.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 21 16z"/></svg>
+    +91 83495 96537
+  </a>
+  <a href="#">
+    <svg width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+    Indore, Madhya Pradesh
+  </a>
+</div>
+
+<div class="content">
+
+  <!-- SUMMARY -->
+  <div class="section-label">About</div>
+  <div class="summary-box">
+    <p>Results-driven professional with 3+ years of combined experience in financial crime analysis, AI quality evaluation, and customer and technical support. Proven track record at leading global companies including Coinbase and Revolut. Expertise in AML, KYC/IDV, fraud investigation, AI model evaluation, and game and content quality assurance. Passionate about contributing expertise in a dynamic, high-impact environment.</p>
+  </div>
+
+  <!-- EXPERIENCE -->
+  <div class="section-label">Work Experience</div>
+
+  <!-- Coinbase -->
+  <div class="job">
+    <div class="job-header">
+      <div>
+        <div class="job-badge badge-fincrime">FinCrime & Compliance</div>
+        <div class="job-title">FinCrime Analyst</div>
+        <div class="job-company"><strong>Coinbase</strong> · via TaskUS</div>
+      </div>
+      <div class="job-period">2023 – 2024</div>
+    </div>
+    <div class="job-body">
+      <p>Took complete ownership of account security and financial crime investigations at Coinbase, consistently achieving a 98% quality assurance success rate. Reviewed account activity to detect fraudulent behavior, anomalies, and suspicious transactions, while conducting thorough IDV and KYC reviews for account recovery cases. Handled complex AML, ATO, CTF, and chargeback scenarios across payment networks including SWIFT, SEPA, ACH, Wire, and Faster Payments. Investigated money laundering, terror financing, sanctions breaches, adverse media, and PEPs, and prepared Suspicious Activity Reports (SARs) alongside transaction monitoring reporting. Collaborated across teams using Salesforce, Athena, Confluence, Slack, and Amazon Connect.</p>
+    </div>
+  </div>
+
+  <!-- Revolut -->
+  <div class="job">
+    <div class="job-header">
+      <div>
+        <div class="job-badge badge-support">Payments Support</div>
+        <div class="job-title">Team Mate – Payments Support</div>
+        <div class="job-company"><strong>Revolut</strong> · via TaskUS</div>
+      </div>
+      <div class="job-period">2022 – 2023</div>
+    </div>
+    <div class="job-body">
+      <p>Supported Revolut customers with payment-related inquiries and troubleshooting across debit/credit cards, ACH, Wire, and SEPA transfers. Handled escalated customer issues with professionalism and empathy, ensuring swift resolutions and high satisfaction scores. Collaborated closely with technical teams to identify and resolve payment system glitches, maintaining smooth and reliable payment processing for users.</p>
+    </div>
+  </div>
+
+  <!-- Welo Data -->
+  <div class="job">
+    <div class="job-header">
+      <div>
+        <div class="job-badge badge-ai">AI & Quality Assurance</div>
+        <div class="job-title">AI Quality Specialist</div>
+        <div class="job-company"><strong>Welo Data</strong> · Freelance</div>
+      </div>
+      <div class="job-period">Nov 2025</div>
+    </div>
+    <div class="job-body">
+      <p>Evaluated AI-generated responses for accuracy, safety, and quality compliance across text and visual domains. Conducted prompt-level analysis and factual verification to help improve model performance. Contributed as a Mathematics Subject Matter Expert, solving and critically reviewing a wide range of math problems — spanning arithmetic, algebra, geometry, and logic — to support AI model training and evaluation. Ensured each solution was accurate, clearly explained, and consistent with project guidelines. Delivered structured feedback that drove measurable improvements in conversational AI model performance.</p>
+    </div>
+  </div>
+
+  <!-- Highbrow -->
+  <div class="job">
+    <div class="job-header">
+      <div>
+        <div class="job-badge badge-ai">AI & Quality Assurance</div>
+        <div class="job-title">AI Content Reviewer / Video Annotator</div>
+        <div class="job-company"><strong>Highbrow Technology</strong> · Freelance</div>
+      </div>
+      <div class="job-period">Jul 2024 – Feb 2026</div>
+    </div>
+    <div class="job-body">
+      <p>Reviewed AI-generated content and game recordings to ensure compliance with quality standards. Labeled and analyzed diverse datasets — including text and visual outputs — applying precise, consistent annotations to help AI systems learn patterns and improve accuracy. Conducted rigorous quality checks on AI-generated responses, identifying recurring errors and providing structured, actionable feedback to guide model refinement. Performed detailed gameplay analysis, flagging bugs and performance issues aligned with QA practices, and supported model training pipelines through timely and accurate data annotations.</p>
+    </div>
+  </div>
+
+  <!-- Ubisoft -->
+  <div class="job">
+    <div class="job-header">
+      <div>
+        <div class="job-badge badge-tech">Technical Support</div>
+        <div class="job-title">Technical Support Specialist</div>
+        <div class="job-company"><strong>Ubisoft</strong> · Remote</div>
+      </div>
+      <div class="job-period">Feb 2026</div>
+    </div>
+    <div class="job-body">
+      <p>Provided technical support for Rainbow Six Mobile players, resolving a wide range of gameplay, account, and technical issues. Documented recurring problems and communicated findings to development teams to support continuous product improvement. Analyzed issue patterns proactively to improve system performance and enhance the overall user experience.</p>
+    </div>
+  </div>
+
+  <!-- Uber -->
+  <div class="job">
+    <div class="job-header">
+      <div>
+        <div class="job-badge badge-support">Customer Support</div>
+        <div class="job-title">Customer Support Specialist</div>
+        <div class="job-company"><strong>Uber</strong> · via Teleperformance</div>
+      </div>
+      <div class="job-period">2022 – 2023</div>
+    </div>
+    <div class="job-body">
+      <p>Managed real-time voice support for Uber driver partners in a high-volume call centre environment. Resolved driver issues on the spot — including critical Account Takeover (ATO) cases — while maintaining high customer satisfaction scores through clear communication and swift problem-solving. This role built a strong foundation in staying calm, focused, and empathetic under pressure.</p>
+    </div>
+  </div>
+
+  <!-- SKILLS -->
+  <div class="section-label">Key Skills</div>
+  <div class="skills-grid">
+    <div class="skill-card">
+      <div class="skill-card-title">FinCrime & Compliance</div>
+      <div class="skill-tags">
+        <span class="skill-tag">AML</span>
+        <span class="skill-tag">KYC / IDV</span>
+        <span class="skill-tag">CTF</span>
+        <span class="skill-tag">Sanctions</span>
+        <span class="skill-tag">PEPs</span>
+        <span class="skill-tag">SAR Reporting</span>
+        <span class="skill-tag">Fraud Investigation</span>
+      </div>
+    </div>
+    <div class="skill-card">
+      <div class="skill-card-title">Payments</div>
+      <div class="skill-tags">
+        <span class="skill-tag">SWIFT</span>
+        <span class="skill-tag">SEPA</span>
+        <span class="skill-tag">ACH</span>
+        <span class="skill-tag">Wire</span>
+        <span class="skill-tag">Faster Payments</span>
+        <span class="skill-tag">SOFORT</span>
+      </div>
+    </div>
+    <div class="skill-card">
+      <div class="skill-card-title">AI & Quality Assurance</div>
+      <div class="skill-tags">
+        <span class="skill-tag">AI Evaluation</span>
+        <span class="skill-tag">Prompt Analysis</span>
+        <span class="skill-tag">Data Annotation</span>
+        <span class="skill-tag">Content Review</span>
+        <span class="skill-tag">Bug Reporting</span>
+      </div>
+    </div>
+    <div class="skill-card">
+      <div class="skill-card-title">Tools & Platforms</div>
+      <div class="skill-tags">
+        <span class="skill-tag">Salesforce</span>
+        <span class="skill-tag">Athena</span>
+        <span class="skill-tag">Confluence</span>
+        <span class="skill-tag">Slack</span>
+        <span class="skill-tag">Amazon Connect</span>
+        <span class="skill-tag">MS Office</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- EDUCATION -->
+  <div class="section-label">Education</div>
+  <div class="edu-card">
+    <div>
+      <div class="edu-degree">Bachelor of Technology — Civil Engineering</div>
+      <div class="edu-school">Rajiv Gandhi Proudyogiki Vishwavidyalaya, Bhopal</div>
+    </div>
+    <div class="edu-icon">
+      <svg viewBox="0 0 24 24"><path d="M22 10v6M2 10l10-5 10 5-10 5-10-5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></svg>
+    </div>
+  </div>
+  <div class="edu-card" style="margin-top: -30px;">
+    <div>
+      <div class="edu-degree">Diploma in Civil Engineering</div>
+      <div class="edu-school">Polytechnic Institute</div>
+    </div>
+    <div class="edu-icon">
+      <svg viewBox="0 0 24 24"><path d="M22 10v6M2 10l10-5 10 5-10 5-10-5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></svg>
+    </div>
+  </div>
+
+</div>
+
+<footer>
+  © 2026 Esha Patel · Indore, Madhya Pradesh · Patelesha413@gmail.com
+</footer>
+
+</body>
+</html>
